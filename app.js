@@ -134,7 +134,7 @@ app.get("/", (req, res) => {
 });
 
 //Index Route
-app.get("/listings", wrapAsync(async (req, res) => {
+app.get("/listings",  wrapAsync( async (req, res) => {
   const allListings = await Listing.find({});
   res.render("listings/index.ejs", { allListings });
 }));
@@ -145,7 +145,7 @@ app.get("/listings/new", (req, res) => {
 });
 
 //Show Route
-app.get("/listings/:id", wrapAsync(async (req, res) => {
+app.get("/listings/:id",  wrapAsync(async (req, res) => {
   let { id } = req.params;
   const listing = await Listing.findById(id);
   res.render("listings/show.ejs", { listing });
@@ -162,21 +162,21 @@ app.post(
 );
 
 //Edit Route
-app.get("/listings/:id/edit", wrapAsync(async (req, res) => {
+app.get("/listings/:id/edit", wrapAsync( async (req, res) => {
   let { id } = req.params;
   const listing = await Listing.findById(id);
   res.render("listings/edit.ejs", { listing });
 }));
 
 //Update Route
-app.put("/listings/:id", wrapAsync(async (req, res) => {
+app.put("/listings/:id",  wrapAsync(async (req, res) => {
   let { id } = req.params;
   await Listing.findByIdAndUpdate(id, { ...req.body.listing });
   res.redirect(`/listings/${id}`);
 }));
 
 //Delete Route
-app.delete("/listings/:id", wrapAsync(async (req, res) => {
+app.delete("/listings/:id",  wrapAsync(async (req, res) => {
   let { id } = req.params;
   let deletedListing = await Listing.findByIdAndDelete(id);
   console.log(deletedListing);
@@ -202,9 +202,9 @@ app.all("*", (req, res, next) => {
 });
 
 app.use((err, req, res, next) => {
-  let { statusCode=500, message='wroong' } = err;
-  console.log(err)
+  let { statusCode = 501, message=' something went wrong' } = err;
   res.status(statusCode).send(message);
+  // res.send('error')
 });
 
 app.listen(8080, () => {
