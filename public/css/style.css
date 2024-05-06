@@ -59,10 +59,10 @@ body {
 }
 
 /* cards */
-.card {
+.listing-card {
   border: none !important;
   /* gap: 10px; */
-  margin-bottom: 2rem;
+  margin-bottom: 2rem !important;
 }
 
 .card-img-top {
@@ -103,11 +103,21 @@ body {
   height: 30vh;
 }
 
-.btns{
+.btns {
   display: flex;
 }
 
-.show-card{
+.show-card {
   padding-left: 0;
   padding-right: 0;
+}
+.main {
+  border: none !important;
+  /* margin-bottom: 1rem; */
+}
+
+/* MAP */
+#map {
+  height: 350px;
+  width: 100vh;
 }
