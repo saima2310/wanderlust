@@ -170,7 +170,7 @@ const sessionOptions = {
 };
 
 app.get("/", (req, res) => {
-  res.render('index.ejs');
+  res.redirect('/listings');
 });
 
 app.use(session(sessionOptions));
